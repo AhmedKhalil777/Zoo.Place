@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Zoo.Place.Data;
+using Zoo.Place.Services;
 
 namespace Zoo.Place.Installers
 {
@@ -16,6 +17,7 @@ namespace Zoo.Place.Installers
             services.AddDbContext<ZooDbContext>(options => {
                 options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")); 
             });
+            services.AddScoped<IZooServices, ZooServices>();
             
         }
     }

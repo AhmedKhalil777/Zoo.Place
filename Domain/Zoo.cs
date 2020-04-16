@@ -18,6 +18,7 @@ namespace Zoo.Place.Domain
 
         public string Address { get; set; }
 
+        public string PicPath { get; set; }
         public virtual List<Cage> Cages { get; set; }
         public virtual List<AnimalClass> Classes  { get; set; }
 

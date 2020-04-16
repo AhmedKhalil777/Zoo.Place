@@ -1,0 +1,69 @@
+﻿@page "/Admin/Zoo/Create"
+@namespace Zoo.Place.Pages.Admin
+@inject IZooServices zooServices;
+
+@using Contracts.Requests;
+
+
+
+<h3>CreateZoo</h3>
+<!-- Card -->
+<div class="card mx-xl-5">
+
+    <!-- Card body -->
+    <div class="card-body">
+
+        <!-- Default form subscription -->
+        <EditForm Model="@model" OnValidSubmit="@saveZoo">
+            <p class="h4 text-center py-4">Subscribe</p>
+
+            <!-- Default input name -->
+            <label for="defaultFormCardNameEx" class="grey-text font-weight-light">Zoo Name</label>
+            <InputText id="defaultFormCardNameEx" class="form-control" @bind-Value="model.Name"></InputText>
+
+            <br>
+
+            <!-- Default input email -->
+            <label for="defaultFormCardEmailEx" class="grey-text font-weight-light">Address</label>
+            <InputText id="defaultFormCardNameEx" class="form-control" @bind-Value="model.Address"></InputText>
+            <br />  
+            
+            <label for="defaultFormCardEmailEx" class="grey-text font-weight-light">PicPath</label>
+            <InputText id="defaultFormCardNameEx" class="form-control" @bind-Value="model.PicPath"></InputText>
+            <br />
+
+            <div class="text-center py-4 mt-3">
+                <button class="btn btn-outline-purple" type="submit">
+                    Send<i class="fa fa-paper-plane-o ml-2"></i>
+                </button>
+            </div>
+        </EditForm>
+            <!-- Default form subscription -->
+
+</div>
+    <!-- Card body -->
+
+</div>
+<!-- Card -->
+
+
+
+    
+
+
+@code {
+    public ZooCreateViewModel model { get; set; }
+
+
+    protected override void OnInitialized()
+    {
+        model = new ZooCreateViewModel();
+    }
+
+    private void saveZoo()
+    {
+        zooServices.CreateZoo(model);
+
+    }
+
+}
